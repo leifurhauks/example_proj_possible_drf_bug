@@ -11,8 +11,6 @@ from .views import ProfileViewSet
 class ProfileTests(TestCase):
     def setUp(self):
         self.new_user_data = {
-            'username': 'user1',
-            'email': 'user1@example.com',
             'description': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '
                             'eiusmod tempor incididunt ut labore et dolore magna aliqua.')
         }
@@ -22,7 +20,6 @@ class ProfileTests(TestCase):
         self.assertTrue(serializer.is_valid(), serializer.errors)
 
         profile = serializer.save()
-        self.assertEquals(profile.user.username, self.new_user_data['username'])
         self.assertEquals(profile.description, self.new_user_data['description'])
 
     def test_profile_create_view(self):
@@ -51,8 +48,5 @@ class ProfileTests(TestCase):
         self.assertTrue(serializer.is_valid(), serializer.errors)
 
         profile = serializer.save()
-        self.assertEquals(profile.user.username, self.new_user_data['username'])
         self.assertEquals(profile.description, self.new_user_data['description'])
-
-
 
